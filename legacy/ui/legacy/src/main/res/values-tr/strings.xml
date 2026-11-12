@@ -55,7 +55,7 @@
     <string name="refresh_folders_action">Klasör listesini yenile</string>
     <string name="filter_folders_action">Klasör bul</string>
     <string name="add_account_action">Hesap ekle</string>
-    <string name="compose_action">Oluştur</string>
+    <string name="compose_action">E-posta yaz</string>
     <string name="search_action">Arama</string>
     <string name="search_everywhere_action">Her yerde ara</string>
     <string name="search_results">Arama sonuçları</string>
@@ -642,10 +642,13 @@
     <!--Note: This references message_view_download_remainder-->
     <string name="preview_encrypted">*Şifreli*</string>
     <string name="add_from_contacts">Kişilerden ekle</string>
-    <string name="recipient_cc">Cc</string>
-    <string name="recipient_bcc">Bcc</string>
-    <string name="recipient_to">Kime</string>
-    <string name="recipient_from">Kimden</string>
+    <string name="recipient_cc">Cc/Bcc:</string>
+    <string name="recipient_bcc">Bcc:</string>
+    <string name="recipient_to">Kime:</string>
+    <string name="recipient_from">Kimden:</string>
+    <string name="recipient_cc_bcc">Cc/Bcc:</string>
+    <string name="message_compose_subject_label">Konu:</string>
+    <string name="default_signature">Xiaomi cihazımdan gönderildi</string>
     <string name="reply_to_label">Yanıt adresi</string>
     <string name="unknown_recipient">&lt;Bilinmeyen Alıcı&gt;</string>
     <string name="unknown_sender">&lt;Bilinmeyen Gönderici&gt;</string>

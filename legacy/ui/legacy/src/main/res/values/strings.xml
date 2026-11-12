@@ -923,10 +923,13 @@
     <!-- Note: This references message_view_download_remainder -->
     <string name="preview_encrypted">*Encrypted*</string>
     <string name="add_from_contacts">Add from Contacts</string>
-    <string name="recipient_cc">Cc</string>
-    <string name="recipient_bcc">Bcc</string>
-    <string name="recipient_to">To</string>
-    <string name="recipient_from">From</string>
+    <string name="recipient_cc">Cc/Bcc:</string>
+    <string name="recipient_bcc">Bcc:</string>
+    <string name="recipient_to">To:</string>
+    <string name="recipient_from">From:</string>
+    <string name="recipient_cc_bcc">Cc/Bcc:</string>
+    <string name="message_compose_subject_label">Subject:</string>
+    <string name="default_signature">Sent from my Xiaomi device</string>
     <string name="reply_to_label">Reply to</string>
     <string name="expand_content_description">Expand</string>
     <string name="unknown_recipient">&lt;Unknown Recipient&gt;</string>

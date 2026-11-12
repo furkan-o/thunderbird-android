@@ -2,7 +2,6 @@ package net.thunderbird.components.ui.bolt.organism
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBar as Material3TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,6 +12,7 @@ import net.thunderbird.components.ui.bolt.atom.button.ButtonIcon
 import net.thunderbird.components.ui.bolt.atom.icon.Icons
 import net.thunderbird.components.ui.bolt.atom.text.TextTitleLarge
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
+import androidx.compose.material3.TopAppBar as Material3TopAppBar
 
 /**
  * A top app bar with a title, subtitle, navigation icon, and actions.

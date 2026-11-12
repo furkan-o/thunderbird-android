@@ -96,9 +96,9 @@ android {
     buildTypes {
         val minify = providers.gradleProperty("minify")
             .map(String::toBoolean)
-            .orElse(true)
+            .orElse(false)
         release {
-            signingConfig = signingConfigs.getByType(SigningType.TB_RELEASE)
+            signingConfig = signingConfigs.getByType(SigningType.TB_RELEASE) ?: signingConfigs.getByName("debug")
 
             isMinifyEnabled = minify.get()
             isShrinkResources = minify.get()

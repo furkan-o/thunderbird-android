@@ -56,6 +56,7 @@ class MessageViewHolder(
     val starClickAreaView: View = view.findViewById(R.id.star_click_area)
     val attachmentView: ImageView = view.findViewById(R.id.attachment)
     val statusView: ImageView = view.findViewById(R.id.status)
+    val unreadDotView: View? = view.findViewById(R.id.unread_dot)
 
     @Suppress("LongMethod", "CyclomaticComplexMethod")
     fun bind(messageListItem: MessageListItem, isActive: Boolean, isSelected: Boolean) {
@@ -130,6 +131,7 @@ class MessageViewHolder(
             subjectView.setTextColor(foregroundColor)
 
             val firstLineText = if (appearance.senderAboveSubject) displayName else subject
+            unreadDotView?.isVisible = !isRead
             subjectView.text = firstLineText
 
             subjectView.contentDescription = if (isRead) {
@@ -138,8 +140,8 @@ class MessageViewHolder(
                 res.getString(R.string.message_list_content_description_unread_prefix, firstLineText)
             }
 
-            dateView.typeface = Typeface.create(dateView.typeface, maybeBoldTypeface)
-            dateView.setTextColor(foregroundColor)
+            dateView.typeface = Typeface.create(dateView.typeface, Typeface.NORMAL)
+            dateView.setTextColor(colors.previewText)
             dateView.text = messageListItem.displayMessageDateTime
             attachmentView.isVisible = hasAttachments
             attachmentView.setColorFilter(foregroundColor)

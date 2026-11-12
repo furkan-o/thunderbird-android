@@ -9,4 +9,13 @@
     <string name="navigation_drawer_dropdown_unified_account_title">Birleşik hesap</string>
     <string name="navigation_drawer_dropdown_action_add_account">Hesap ekle</string>
     <string name="navigation_drawer_dropdown_action_sync_account">Hesabı eşitle</string>
+    <string name="navigation_drawer_dropdown_unified_outbox_title">Giden Kutusu</string>
+    <string name="navigation_drawer_dropdown_unified_drafts_title">Taslaklar</string>
+    <string name="navigation_drawer_dropdown_unified_sent_title">Gönderilenler</string>
+    <string name="navigation_drawer_dropdown_unified_archive_title">Arşiv</string>
+    <string name="navigation_drawer_dropdown_unified_spam_title">Spam</string>
+    <string name="navigation_drawer_dropdown_unified_trash_title">Çöp Kutusu</string>
+    <string name="navigation_drawer_dropdown_header_mail">E-posta</string>
+    <string name="navigation_drawer_dropdown_current_account">Geçerli hesap</string>
+    <string name="navigation_drawer_dropdown_switch_account">Değiştir</string>
 </resources>

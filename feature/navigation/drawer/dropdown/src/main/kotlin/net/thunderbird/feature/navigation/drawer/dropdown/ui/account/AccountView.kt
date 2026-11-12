@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.displayCutout
@@ -20,6 +21,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,12 +67,21 @@ internal fun AccountView(
             )
         }
 
-        AnimatedExpandIcon(
-            isExpanded = showAccountSelection,
-            isShowAnimations = isShowAnimations,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(end = BoltTheme.spacings.double),
-            tint = BoltTheme.colors.onSurfaceVariant,
-        )
+        ) {
+            TextBodyMedium(
+                text = stringResource(R.string.navigation_drawer_dropdown_switch_account),
+                color = BoltTheme.colors.onSurfaceVariant,
+            )
+            Spacer(modifier = Modifier.width(BoltTheme.spacings.quarter))
+            AnimatedExpandIcon(
+                isExpanded = showAccountSelection,
+                isShowAnimations = isShowAnimations,
+                tint = BoltTheme.colors.onSurfaceVariant,
+            )
+        }
     }
 }
 

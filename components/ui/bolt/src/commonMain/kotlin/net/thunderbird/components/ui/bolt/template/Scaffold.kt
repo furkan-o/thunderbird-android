@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.FabPosition as Material3FabPosition
-import androidx.compose.material3.Scaffold as Material3Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,6 +14,8 @@ import net.thunderbird.components.ui.bolt.atom.button.ButtonIcon
 import net.thunderbird.components.ui.bolt.atom.icon.Icons
 import net.thunderbird.components.ui.bolt.common.annotation.PreviewDevices
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
+import androidx.compose.material3.FabPosition as Material3FabPosition
+import androidx.compose.material3.Scaffold as Material3Scaffold
 
 @Suppress("LongParameterList")
 @Composable

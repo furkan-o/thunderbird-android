@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBar as Material3TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,6 +19,7 @@ import net.thunderbird.components.ui.bolt.resources.Res
 import net.thunderbird.components.ui.bolt.resources.bolt_organism_subtitle_top_app_bar_up_description
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.material3.TopAppBar as Material3TopAppBar
 
 /**
  * A top app bar with a title, subtitle, navigation icon, and actions.

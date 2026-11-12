@@ -100,9 +100,9 @@ object MessageItemAvatarCircleDefaults {
      */
     @Composable
     fun colorsFrom(color: Color) = MessageItemAvatarCircleColors(
-        borderColor = color,
-        containerColor = color.copy(alpha = .15f),
-        contentColor = contentColorFor(color),
+        borderColor = color.copy(alpha = 0.25f),
+        containerColor = color.copy(alpha = 0.18f),
+        contentColor = color,
     )
 }
 

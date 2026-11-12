@@ -2,7 +2,6 @@ package net.thunderbird.components.ui.bolt.atom
 
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.material3.Surface as Material3Surface
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +14,7 @@ import net.thunderbird.components.ui.bolt.PreviewWithThemes
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
 import net.thunderbird.components.ui.bolt.theme.ThemeColorScheme
 import net.thunderbird.components.ui.bolt.theme.ThemeElevations
+import androidx.compose.material3.Surface as Material3Surface
 
 /**
  * UI atom for a surface with customizable shape, color, and elevation. This is a convenience wrapper

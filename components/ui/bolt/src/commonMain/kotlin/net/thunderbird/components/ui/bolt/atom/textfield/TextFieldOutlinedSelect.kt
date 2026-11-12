@@ -2,14 +2,9 @@ package net.thunderbird.components.ui.bolt.atom.textfield
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.DropdownMenu as Material3DropdownMenu
-import androidx.compose.material3.DropdownMenuItem as Material3DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
-import androidx.compose.material3.ExposedDropdownMenuBox as Material3ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.OutlinedTextField as Material3OutlinedTextField
-import androidx.compose.material3.Text as Material3Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +20,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import net.thunderbird.components.ui.bolt.PreviewWithThemes
+import androidx.compose.material3.DropdownMenu as Material3DropdownMenu
+import androidx.compose.material3.DropdownMenuItem as Material3DropdownMenuItem
+import androidx.compose.material3.ExposedDropdownMenuBox as Material3ExposedDropdownMenuBox
+import androidx.compose.material3.OutlinedTextField as Material3OutlinedTextField
+import androidx.compose.material3.Text as Material3Text
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Suppress("LongParameterList", "LongMethod")

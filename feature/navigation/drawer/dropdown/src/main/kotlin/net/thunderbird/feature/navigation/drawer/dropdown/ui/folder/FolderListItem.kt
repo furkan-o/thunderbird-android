@@ -16,6 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -84,7 +85,13 @@ internal fun FolderListItem(
                 }
             },
             modifier = Modifier.fillMaxWidth(),
-            icon = { Icon(imageVector = mapFolderIcon(displayFolder)) },
+            icon = {
+                val folderColor = mapFolderColor(displayFolder)
+                Icon(
+                    imageVector = mapFolderIcon(displayFolder),
+                    tint = folderColor,
+                )
+            },
         )
 
         // Managing children
@@ -215,5 +222,33 @@ private fun mapDisplayUnifiedFolderIcon(folder: UnifiedDisplayFolder): ImageVect
         FolderRole.ARCHIVE -> Icons.Outlined.Archive
         FolderRole.SPAM -> Icons.Outlined.Report
         FolderRole.TRASH -> Icons.Outlined.Delete
+    }
+}
+
+private fun mapFolderColor(folder: DisplayFolder): Color {
+    return when (folder) {
+        is MailDisplayFolder -> when {
+            folder.isInTopGroup -> Color(0xFFFFB300)
+            folder.folder.type == FolderType.INBOX -> Color(0xFF34C759)
+            folder.folder.type == FolderType.DRAFTS -> Color(0xFF0084FF)
+            folder.folder.type == FolderType.OUTBOX -> Color(0xFFFF9500)
+            folder.folder.type == FolderType.SENT -> Color(0xFF00C7BE)
+            folder.folder.type == FolderType.TRASH -> Color(0xFFAF52DE)
+            folder.folder.type == FolderType.SPAM -> Color(0xFFFF9800)
+            folder.folder.type == FolderType.ARCHIVE -> Color(0xFF5856D6)
+            else -> Color(0xFF8E8E93)
+        }
+
+        is UnifiedDisplayFolder -> when (folder.role) {
+            FolderRole.INBOX -> Color(0xFF34C759)
+            FolderRole.OUTBOX -> Color(0xFFFF9500)
+            FolderRole.DRAFTS -> Color(0xFF0084FF)
+            FolderRole.SENT -> Color(0xFF00C7BE)
+            FolderRole.ARCHIVE -> Color(0xFF5856D6)
+            FolderRole.SPAM -> Color(0xFFFF9800)
+            FolderRole.TRASH -> Color(0xFFAF52DE)
+        }
+
+        else -> Color(0xFF8E8E93)
     }
 }

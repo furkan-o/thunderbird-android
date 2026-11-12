@@ -462,6 +462,15 @@ public class MessageCompose extends BaseActivity implements OnClickListener,
         subjectView.setOnFocusChangeListener(this);
         messageContentView.setOnFocusChangeListener(this);
 
+        View inlineAttachment = findViewById(R.id.action_inline_attachment);
+        if (inlineAttachment != null) {
+            inlineAttachment.setOnClickListener(v -> attachmentPresenter.onClickAddAttachment(recipientPresenter));
+        }
+        View inlineContacts = findViewById(R.id.action_inline_contacts);
+        if (inlineContacts != null) {
+            inlineContacts.setOnClickListener(v -> recipientPresenter.onMenuAddFromContacts());
+        }
+
         if (savedInstanceState != null) {
             /*
              * This data gets used in onCreate, so grab it here instead of onRestoreInstanceState
@@ -1193,25 +1202,22 @@ public class MessageCompose extends BaseActivity implements OnClickListener,
     }
 
     private void updateSignature() {
-        if (identity.getSignatureUse()) {
-            String signature = CrLfConverter.toLf(identity.getSignature());
-            signatureView.setText(signature);
-            // The plain EditText can't render HTML, so for HTML signatures we hide it and
-            // show a rendered preview in a WebView instead. The EditText still holds the
-            // raw HTML so signatureView.getText() continues to feed the outgoing message.
-            if (identity.getSignatureIsHtml() && signature != null) {
-                signatureView.setVisibility(View.GONE);
-                final String sanitizedSignature = htmlSignatureSanitizer.sanitize(signature);
-                final String document = displayHtml.wrapMessageContent(sanitizedSignature);
-                signatureHtmlPreview.displayHtmlContentWithInlineAttachments(document, null, null);
-                signatureHtmlPreview.setVisibility(View.VISIBLE);
-            } else {
-                signatureHtmlPreview.setVisibility(View.GONE);
-                signatureView.setVisibility(View.VISIBLE);
-            }
-        } else {
+        String defaultSig = getString(R.string.default_signature);
+        String signature = identity.getSignatureUse() ? identity.getSignature() : defaultSig;
+        if (signature == null || signature.trim().isEmpty()) {
+            signature = defaultSig;
+        }
+        signature = CrLfConverter.toLf(signature);
+        signatureView.setText(signature);
+        if (identity.getSignatureIsHtml() && signature != null) {
             signatureView.setVisibility(View.GONE);
+            final String sanitizedSignature = htmlSignatureSanitizer.sanitize(signature);
+            final String document = displayHtml.wrapMessageContent(sanitizedSignature);
+            signatureHtmlPreview.displayHtmlContentWithInlineAttachments(document, null, null);
+            signatureHtmlPreview.setVisibility(View.VISIBLE);
+        } else {
             signatureHtmlPreview.setVisibility(View.GONE);
+            signatureView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -2035,7 +2041,11 @@ public class MessageCompose extends BaseActivity implements OnClickListener,
 
     private void initializeActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(app.k9mail.core.ui.legacy.designsystem.R.drawable.ic_close);
+            actionBar.setTitle(R.string.compose_action);
+        }
     }
 
     private void initializeInAppNotificationFragment() {

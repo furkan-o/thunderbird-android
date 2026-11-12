@@ -2,8 +2,6 @@ package net.thunderbird.components.ui.bolt.atom.button
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.OutlinedButton as Material3OutlinedButton
-import androidx.compose.material3.Text as Material3Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -13,6 +11,8 @@ import net.thunderbird.components.ui.bolt.PreviewWithThemes
 import net.thunderbird.components.ui.bolt.atom.icon.Icon
 import net.thunderbird.components.ui.bolt.atom.icon.Icons
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
+import androidx.compose.material3.OutlinedButton as Material3OutlinedButton
+import androidx.compose.material3.Text as Material3Text
 
 /**
  * Outlined button component.

@@ -54,6 +54,14 @@ class ContactLetterExtractorTest : RobolectricTest() {
         assertExtractedLetterEquals("?", "\uD83D\uDE00 <a@b.com>")
     }
 
+    @Test
+    fun extractContactLetter_withMultiWordInitials() {
+        assertExtractedLetterEquals("GA", "Google AdMob <admob@google.com>")
+        assertExtractedLetterEquals("GT", "Google Search Console Team <sc@google.com>")
+        assertExtractedLetterEquals("JG", "Juan Pablo Guzman <juan@guzman.com>")
+        assertExtractedLetterEquals("E", "Eleman.net <noreply@eleman.net>")
+    }
+
     private fun assertExtractedLetterEquals(expected: String, address: String) {
         assertThat(letterExtractor.extractContactLetter(Address(address))).isEqualTo(expected)
     }

@@ -15,7 +15,7 @@ the 'composer theme' setting).
     >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
@@ -27,24 +27,47 @@ the 'composer theme' setting).
             android:layout_width="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="?attr/colorSurfaceContainerLow"
+            android:background="?android:attr/colorBackground"
             android:minHeight="50dp"
             >
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:minWidth="50dp"
+                android:text="@string/message_compose_subject_label"
+                style="@style/ComposeTextLabel"
+                />
+
             <EditText
                 android:id="@+id/subject"
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:hint="@string/message_compose_subject_hint"
                 android:inputType="textEmailSubject|textAutoCorrect|textCapSentences"
                 android:imeOptions="actionNext|flagNoExtractUi|flagNoPersonalizedLearning"
                 android:singleLine="true"
-                android:layout_marginLeft="12dip"
-                android:layout_marginRight="12dip"
                 android:background="@android:color/transparent"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
+                />
+
+            <ImageView
+                android:id="@+id/action_inline_attachment"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
+                android:padding="6dp"
+                android:contentDescription="@string/add_attachment_action"
+                app:srcCompat="@drawable/ic_attachment"
+                app:tint="?attr/colorOnSurfaceVariant"
                 />
         </LinearLayout>
 
@@ -58,7 +81,7 @@ the 'composer theme' setting).
              EditText won't properly grow in height while the user is typing the message -->
         <EditText
             android:id="@+id/message_content"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="top"
@@ -66,8 +89,8 @@ the 'composer theme' setting).
             android:inputType="textMultiLine|textAutoCorrect|textCapSentences"
             android:imeOptions="actionDone|flagNoEnterAction|flagNoExtractUi|flagNoPersonalizedLearning"
             android:minLines="3"
-            android:paddingLeft="12dip"
-            android:paddingRight="12dip"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             tools:ignore="InefficientWeight"
             />

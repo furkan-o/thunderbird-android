@@ -93,6 +93,20 @@
         tools:ignore="RtlSymmetry"
         />
 
+    <ImageView
+        android:id="@+id/unread_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="6dp"
+        android:contentDescription="@null"
+        android:src="@drawable/unread_dot_indicator"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/subject"
+        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintTop_toTopOf="@+id/subject"
+        tools:visibility="visible"
+        />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/subject"
         android:layout_width="wrap_content"
@@ -105,7 +119,7 @@
         app:layout_constraintEnd_toStartOf="@+id/thread_count"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintStart_toEndOf="@+id/unread_dot"
         app:layout_constraintTop_toTopOf="@+id/top_guideline"
         tools:text="Subject"
         />
@@ -157,6 +171,7 @@
         android:layout_marginEnd="@dimen/messageListHorizontalPadding"
         android:src="@drawable/btn_select_star"
         android:contentDescription="@string/star_button_description"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/preview"

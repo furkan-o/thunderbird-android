@@ -17,6 +17,9 @@
         android:contentDescription="@string/compose_action"
         app:layout_behavior="com.fsck.k9.ui.fab.HideFabOnScrollBehavior"
         app:srcCompat="@drawable/ic_edit"
+        app:backgroundTint="?attr/colorPrimary"
+        app:tint="@android:color/white"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
         android:focusable="true"
         />
 

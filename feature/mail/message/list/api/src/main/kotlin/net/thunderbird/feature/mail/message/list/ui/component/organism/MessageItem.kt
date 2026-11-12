@@ -208,11 +208,6 @@ private fun LeadingElements(
         horizontalArrangement = Arrangement.spacedBy(BoltTheme.spacings.quarter),
         modifier = modifier.fillMaxHeight(),
     ) {
-        when (configuration.badgeStyle) {
-            MessageBadgeStyle.New -> NewMessageBadge()
-            MessageBadgeStyle.Unread -> UnreadMessageBadge()
-            null -> Spacer(Modifier.width(MESSAGE_BADGE_SIZE.dp))
-        }
         AnimatedContent(targetState = selected) { selected ->
             when {
                 selected -> ButtonIcon(
@@ -231,7 +226,7 @@ private fun LeadingElements(
                     MessageItemAvatarCircle(
                         avatar = configuration.avatar,
                         colors = MessageItemAvatarCircleDefaults.colorsFrom(
-                            configuration.avatarColor ?: BoltTheme.colors.secondaryContainer,
+                            configuration.avatarColor ?: BoltTheme.colors.primary,
                         ),
                         onClick = onClick,
                     )

@@ -1,10 +1,6 @@
 package net.thunderbird.components.ui.bolt.atom.button
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon as Material3Icon
-import androidx.compose.material3.IconButton as Material3IconButton
-import androidx.compose.material3.IconButtonColors as Material3IconButtonColors
-import androidx.compose.material3.IconButtonDefaults as Material3IconButtonDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
@@ -15,6 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import net.thunderbird.components.ui.bolt.PreviewWithThemes
 import net.thunderbird.components.ui.bolt.atom.icon.Icons
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
+import androidx.compose.material3.Icon as Material3Icon
+import androidx.compose.material3.IconButton as Material3IconButton
+import androidx.compose.material3.IconButtonColors as Material3IconButtonColors
+import androidx.compose.material3.IconButtonDefaults as Material3IconButtonDefaults
 
 @Composable
 fun ButtonIcon(

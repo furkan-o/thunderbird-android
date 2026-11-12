@@ -1,19 +1,27 @@
 package net.thunderbird.feature.mail.message.list.ui.component.molecule
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.movableContentOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import net.thunderbird.components.ui.bolt.atom.text.TextTitleSmall
 import net.thunderbird.components.ui.bolt.common.window.WindowWidthSizeClass
 import net.thunderbird.components.ui.bolt.common.window.calculateWindowSizeInfo
@@ -46,9 +54,11 @@ internal fun AdaptiveMessageItemHeaderRow(
     val windowSizeInfo = calculateWindowSizeInfo()
     val isSmallScreen = windowSizeInfo.sizeClass.widthSizeClass == WindowWidthSizeClass.Small
 
+    val isUnread = configuration.leadingConfiguration.badgeStyle != null
     val headerRowContent: @Composable ((RowScope) -> Unit) = rememberAdaptiveHeaderRowContent(
         isSmallScreen = isSmallScreen,
         accountIndicator = configuration.accountIndicator,
+        isUnread = isUnread,
         receivedAt = receivedAt,
         firstLine = firstLine,
     )
@@ -94,9 +104,10 @@ private fun HeaderRowSmall(
 private fun rememberAdaptiveHeaderRowContent(
     isSmallScreen: Boolean,
     accountIndicator: MessageItemAccountIndicator?,
+    isUnread: Boolean,
     receivedAt: String,
     firstLine: @Composable (() -> Unit),
-): @Composable ((RowScope) -> Unit) = remember(isSmallScreen, accountIndicator, receivedAt, firstLine) {
+): @Composable ((RowScope) -> Unit) = remember(isSmallScreen, accountIndicator, isUnread, receivedAt, firstLine) {
     movableContentOf { scope ->
         with(scope) {
             Row(
@@ -109,12 +120,22 @@ private fun rememberAdaptiveHeaderRowContent(
                 if (indicatorColor != null) {
                     AccountIndicatorIcon(indicatorColor)
                 }
+                if (isUnread) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 6.dp)
+                            .size(7.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFFFF3B30)),
+                    )
+                }
                 firstLine()
             }
             TextTitleSmall(
                 text = receivedAt,
                 maxLines = 1,
                 overflow = TextOverflow.Visible,
+                color = BoltTheme.colors.onSurfaceVariant,
                 modifier = Modifier.align(Alignment.CenterVertically),
             )
         }

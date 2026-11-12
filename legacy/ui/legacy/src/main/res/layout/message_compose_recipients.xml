@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorSurfaceContainerLow"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
     >
 
@@ -307,32 +307,50 @@
             style="@style/RecipientEditText"
             />
 
-        <ViewAnimator
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:id="@+id/recipient_expander_container"
-            android:inAnimation="@anim/fade_in"
-            android:outAnimation="@anim/fade_out"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="6dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_expand_more"
-                android:id="@+id/recipient_expander"
-                android:contentDescription="@string/expand_content_description"
+                android:id="@+id/action_inline_contacts"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="4dp"
+                android:contentDescription="@string/add_from_contacts"
+                app:srcCompat="@drawable/ic_person"
+                app:tint="?attr/colorOnSurfaceVariant"
                 />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+            <ViewAnimator
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/recipient_expander_container"
+                android:inAnimation="@anim/fade_in"
+                android:outAnimation="@anim/fade_out"
+                >
 
-        </ViewAnimator>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_expand_more"
+                    android:id="@+id/recipient_expander"
+                    android:contentDescription="@string/expand_content_description"
+                    />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            </ViewAnimator>
+        </LinearLayout>
 
     </RelativeLayout>
 

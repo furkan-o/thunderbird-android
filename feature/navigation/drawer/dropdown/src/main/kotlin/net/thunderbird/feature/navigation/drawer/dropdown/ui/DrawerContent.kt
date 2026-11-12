@@ -10,24 +10,34 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import net.thunderbird.components.ui.bolt.atom.DividerHorizontal
 import net.thunderbird.components.ui.bolt.atom.Surface
+import net.thunderbird.components.ui.bolt.atom.button.ButtonIcon
+import net.thunderbird.components.ui.bolt.atom.icon.Icons
+import net.thunderbird.components.ui.bolt.atom.text.TextBodySmall
+import net.thunderbird.components.ui.bolt.atom.text.TextHeadlineMedium
 import net.thunderbird.components.ui.bolt.theme.BoltTheme
+import net.thunderbird.feature.navigation.drawer.dropdown.R
 import net.thunderbird.feature.navigation.drawer.dropdown.domain.entity.DisplayAccount
 import net.thunderbird.feature.navigation.drawer.dropdown.domain.entity.UnifiedDisplayAccount
 import net.thunderbird.feature.navigation.drawer.dropdown.ui.DrawerContract.Event
@@ -83,13 +93,44 @@ internal fun DrawerContent(
             .width(DRAWER_WIDTH + additionalWidth)
             .fillMaxHeight()
             .testTag("DrawerContent"),
-        color = BoltTheme.colors.surfaceContainerLow,
+        color = BoltTheme.colors.surface,
     ) {
         val selectedAccount = state.accounts.firstOrNull { it.id == state.selectedAccountId }
 
         Column(
             modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
         ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = BoltTheme.spacings.triple,
+                        end = BoltTheme.spacings.default,
+                        top = BoltTheme.spacings.double,
+                        bottom = BoltTheme.spacings.half,
+                    ),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                TextHeadlineMedium(
+                    text = stringResource(R.string.navigation_drawer_dropdown_header_mail),
+                    color = BoltTheme.colors.onSurface,
+                )
+                ButtonIcon(
+                    onClick = { onEvent(Event.OnSettingsClick) },
+                    imageVector = Icons.Outlined.Settings,
+                )
+            }
+
+            TextBodySmall(
+                text = stringResource(R.string.navigation_drawer_dropdown_current_account),
+                color = BoltTheme.colors.onSurfaceVariant,
+                modifier = Modifier.padding(
+                    start = BoltTheme.spacings.triple,
+                    bottom = BoltTheme.spacings.half,
+                ),
+            )
+
             selectedAccount?.let {
                 AccountView(
                     account = selectedAccount,
@@ -99,7 +140,10 @@ internal fun DrawerContent(
                     isShowAnimations = areAnimationsEnabled,
                 )
 
-                DividerHorizontal()
+                DividerHorizontal(
+                    color = BoltTheme.colors.outlineVariant,
+                    modifier = Modifier.padding(horizontal = BoltTheme.spacings.double),
+                )
             }
             AnimatedContent(
                 targetState = state.showAccountSelection,
